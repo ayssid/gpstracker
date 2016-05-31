@@ -8,12 +8,14 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 
 
 class HomeController extends Controller
 {
     public function index(Request $request) {
+        DB::insert('insert into test (value) values(?)', [json_encode($request->all())]);
         return $request->all();
     }
 }
